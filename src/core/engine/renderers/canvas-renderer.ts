@@ -3,6 +3,9 @@ import InitCanvasKit, {
   type CanvasKit,
   type Surface,
 } from "canvaskit-wasm";
+// 生产环境需要正确定位 wasm 资源，使用 Vite 的 `?url` 显式引入
+// 这样打包后会生成正确的静态资源 URL
+import canvaskitWasmUrl from "canvaskit-wasm/bin/canvaskit.wasm?url";
 import { ElementRendererFactory } from "./elements/renderer-factory";
 import { InteractionController } from "../interaction/interaction-controller";
 import { SelectionRendererFactory } from "./selection/renderer-factory";
@@ -29,7 +32,7 @@ class Renderer {
 
   async init(sceneTree: SceneTree) {
     const canvasKit = await InitCanvasKit({
-      locateFile: (file) => `/node_modules/canvaskit-wasm/bin/${file}`,
+      locateFile: () => canvaskitWasmUrl,
     });
     this.canvasKit = canvasKit;
 
