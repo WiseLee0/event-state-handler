@@ -6,7 +6,7 @@ import type { EventStateHandler } from "../event-state-handler";
 
 export class HoverBehavior {
 
-    hoverHitTest(event: MouseEvent, context: EventStateHandler, filterNodes?: (nodes: SceneNode[]) => SceneNode[]) {
+    hitTest(event: MouseEvent, context: EventStateHandler, filterNodes?: (nodes: SceneNode[]) => SceneNode[]) {
         const point = context.getWorldCoordinates(event.clientX, event.clientY);
         const node = this._hoverHitTest(point, filterNodes);
         return node;

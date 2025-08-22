@@ -26,7 +26,7 @@ export class OverlayerState extends BaseState {
             return;
         }
         if (event.button === 0) { // 左键            
-            const isHit = this.clickBehavior.hoverHitTest(event, this.context)
+            const isHit = this.clickBehavior.hitTest(event, this.context)
             if (isHit) {
                 // 移动状态
                 this.context.transitionTo(this.context.states.moving, event);
@@ -42,7 +42,7 @@ export class OverlayerState extends BaseState {
 
     onMouseMove(event: MouseEvent): void {
         // 只需要对 dom card nodes 进行碰撞检测，如果检测到的不是 dom card，切换回空闲状态
-        const node = this.hoverBehavior.hoverHitTest(event, this.context, (nodes) => nodes.filter(node => node.type === 'DOM_CARD'));
+        const node = this.hoverBehavior.hitTest(event, this.context, (nodes) => nodes.filter(node => node.type === 'DOM_CARD'));
         if (node?.type !== 'DOM_CARD') {
             this.context.transitionTo(this.context.states.idle);
         }

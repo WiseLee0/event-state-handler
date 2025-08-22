@@ -31,7 +31,7 @@ export class IdleState extends BaseState {
         }
         if (event.button === 0) { // 0 是鼠标左键
             event.preventDefault();
-            const isHit = this.clickBehavior.hoverHitTest(event, this.context)
+            const isHit = this.clickBehavior.hitTest(event, this.context)
             if (isHit) {
                 // 移动状态
                 this.context.transitionTo(this.context.states.moving, event);
@@ -49,7 +49,7 @@ export class IdleState extends BaseState {
      * 处理悬停事件，元素进行碰撞检测
      */
     onMouseMove(event: MouseEvent): void {
-        const hoverNode = this.hoverBehavior.hoverHitTest(event, this.context)
+        const hoverNode = this.hoverBehavior.hitTest(event, this.context)
         if (hoverNode?.type === 'DOM_CARD') {
             this.context.transitionTo(this.context.states.overlayer, event);
         }

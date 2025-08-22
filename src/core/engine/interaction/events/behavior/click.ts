@@ -6,7 +6,7 @@ import type { EventStateHandler } from "../event-state-handler";
 import { hitMatrixNodeTest } from "@/utils/hit-test";
 
 export class ClickBehavior {
-    hoverHitTest(event: MouseEvent, context: EventStateHandler, filterNodes?: (nodes: SceneNode[]) => SceneNode[]) {
+    hitTest(event: MouseEvent, context: EventStateHandler, filterNodes?: (nodes: SceneNode[]) => SceneNode[]) {
         const point = context.getWorldCoordinates(event.clientX, event.clientY);
         const isHit = this._downHitTest(point, filterNodes)
         return isHit;
