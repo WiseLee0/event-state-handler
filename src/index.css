@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-x pan-y;
+  overscroll-behavior: contain;
+}
+
+.text-color {
+  color: #000000e5;
+}
